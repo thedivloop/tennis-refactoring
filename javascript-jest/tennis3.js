@@ -1,6 +1,6 @@
 'use strict';
 
-function getScore(p1, p2) {
+function getScore3(p1, p2) {
     var s;
     let p1N = "player1";
     let p2N = "player2";
@@ -17,4 +17,4 @@ function getScore(p1, p2) {
     }
 }
 
-module.exports = getScore;
+module.exports = getScore3;

@@ -1,53 +1,19 @@
 'use strict';
 
-function getScore(m_score1, m_score2) {
-    var score = "";
-    var tempScore = 0;
-    if (m_score1 === m_score2) {
-        switch (m_score1) {
-            case 0:
-                score = "Love-All";
-                break;
-            case 1:
-                score = "Fifteen-All";
-                break;
-            case 2:
-                score = "Thirty-All";
-                break;
-            default:
-                score = "Deuce";
-                break;
-        }
-    } else if (m_score1 >= 4 || m_score2 >= 4) {
-        var minusResult = m_score1 - m_score2;
-        if (minusResult === 1) {score = "Advantage player1";}
-        else if (minusResult === -1) {score = "Advantage player2";}
-        else if (minusResult >= 2) {score = "Win for player1";}
-        else {score = "Win for player2";}
-    } else {
-        for (var i = 1; i < 3; i++) {
-            if (i === 1) {tempScore = m_score1;}
-            else {
-                score += "-";
-                tempScore = m_score2;
-            }
-            switch (tempScore) {
-                case 0:
-                    score += "Love";
-                    break;
-                case 1:
-                    score += "Fifteen";
-                    break;
-                case 2:
-                    score += "Thirty";
-                    break;
-                case 3:
-                    score += "Forty";
-                    break;
-            }
-        }
-    }
-    return score;
+function getScore1(m_score1, m_score2) {
+  const scoreDraw = ["Love-All","Fifteen-All","Thirty-All","Deuce"];
+  var score = "";
+  var tempScore = 0;
+  if (m_score1 === m_score2) { 
+    score = scoreDraw[Math.min(m_score1,3)];
+  } else if (m_score1 >= 4 || m_score2 >= 4) {
+    var differenceResult = Math.abs(m_score1 - m_score2);
+    score =  differenceResult == 1 ? "Advantage player" + (m_score1 > m_score2 ? "1" : "2") : "Win for player" + (m_score1 > m_score2 ? "1" : "2");
+  } else {
+      const tempScoreList = ["Love","Fifteen","Thirty","Forty"];
+    score = tempScoreList[m_score1] + "-" + tempScoreList[m_score2];
+  }
+  return score;
 }
 
-module.exports = getScore;
+module.exports = getScore1;

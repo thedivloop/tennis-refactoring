@@ -1,6 +1,6 @@
 'use strict';
 
-function getScore(P1point, P2point) {
+function getScore2(P1point, P2point) {
     var score = "";
 
     if (P1point === P2point && P1point < 3) {
@@ -98,4 +98,4 @@ function getScore(P1point, P2point) {
     return score;
 }
 
-module.exports = getScore;
+module.exports = getScore2;
